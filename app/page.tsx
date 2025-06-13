@@ -79,7 +79,7 @@ export default function ChatApp() {
   };
 
   return (
-    <div className="flex flex-col h-screen bg-gray-50">
+    <div className="flex flex-col h-[100dvh] bg-gray-50">
       <Navbar currentUser={currentUser} />
 
       <div className="flex flex-1 overflow-hidden">
@@ -92,7 +92,7 @@ export default function ChatApp() {
         />
 
         {/* Main Chat Area */}
-        <div className="flex-1 flex flex-col">
+        <div className="flex-1 flex flex-col h-[calc(100dvh-4rem)]">
           <ChatHeader
             selectedContact={selectedContact}
             onOpenSidebar={() => setIsSidebarOpen(true)}
