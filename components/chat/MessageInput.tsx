@@ -10,7 +10,6 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import EmojiPicker, { EmojiClickData } from 'emoji-picker-react';
 
 interface MessageInputProps {
   onSendMessage: (message: string) => void;
@@ -18,7 +17,6 @@ interface MessageInputProps {
 
 export default function MessageInput({ onSendMessage }: MessageInputProps) {
   const [newMessage, setNewMessage] = useState('');
-  const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleSendMessage = () => {
@@ -27,9 +25,7 @@ export default function MessageInput({ onSendMessage }: MessageInputProps) {
     setNewMessage('');
   };
 
-  const handleEmojiClick = (emojiData: EmojiClickData) => {
-    setNewMessage(prev => prev + emojiData.emoji);
-  };
+  
 
   const handleFileUpload = (type: 'image' | 'file' | 'video') => {
     if (fileInputRef.current) {
@@ -95,15 +91,9 @@ export default function MessageInput({ onSendMessage }: MessageInputProps) {
             <Button
               variant="ghost"
               size="sm"
-              onClick={() => setShowEmojiPicker(!showEmojiPicker)}
             >
               <Smile className="h-4 w-4" />
             </Button>
-            {showEmojiPicker && (
-              <div className="absolute bottom-10 right-0 z-50">
-                <EmojiPicker onEmojiClick={handleEmojiClick} />
-              </div>
-            )}
           </div>
         </div>
         <Button
